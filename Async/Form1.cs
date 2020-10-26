@@ -19,10 +19,10 @@ namespace Async
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             label1.Text = "Please Wait ...";
-            int count = GetCharacterCount();
+            int count = await ProccessFile();
             label1.Text = count + "Characters";
         }
 
@@ -38,6 +38,14 @@ namespace Async
             }
 
             return count;
+        }
+
+        async Task<int> ProccessFile()
+        {
+            Task<int> task = new Task<int>(GetCharacterCount);
+            task.Start();
+
+            return await task;
         }
     }
 }
