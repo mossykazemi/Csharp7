@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,6 +17,27 @@ namespace Async
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            label1.Text = "Please Wait ...";
+            int count = GetCharacterCount();
+            label1.Text = count + "Characters";
+        }
+
+        int GetCharacterCount()
+        {
+            int count = 0;
+
+            using (StreamReader reader = new StreamReader("Data.txt"))
+            {
+                string content = reader.ReadToEnd();
+                count = content.Length;
+                Thread.Sleep(5000);
+            }
+
+            return count;
         }
     }
 }
