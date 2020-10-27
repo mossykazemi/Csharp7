@@ -24,12 +24,14 @@ namespace MoreExamples
             // Console.WriteLine(Name);
 
             Person p = new Person("Mostafa");
-            Console.WriteLine(p);
+            Console.WriteLine(p.Name + " " + p.Age);
         }
     }
 
     class Person
     {
+        public int Age { get; set; } = 30;
+
         private string _name;
 
         public string Name
