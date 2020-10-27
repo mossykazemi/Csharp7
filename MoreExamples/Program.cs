@@ -34,14 +34,16 @@ namespace MoreExamples
 
         public string Name
         {
-            get { return _name; }
-            set { _name = value; }
+            //get { return _name; }
+            //set { _name = value; }
+
+            get => _name;
+            set => _name = value;
         }
 
-        public Person(string name)
-        {
-            _name = name;
-        }
+        public Person(string name) => Name = name;
+
+        ~Person() => Console.WriteLine("Destructor");
     }
 }
 
