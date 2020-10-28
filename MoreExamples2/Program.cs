@@ -12,7 +12,7 @@ namespace MoreExamples2
         public static string Name
         {
             get => _name;
-            set => _name = value;
+            set => _name = value ?? throw new ArgumentNullException("Name", "Namw is Null");
         }
 
         static void Main(string[] args)
@@ -20,8 +20,8 @@ namespace MoreExamples2
             Name = null;
 
 
-            if (Name == null)
-                throw new ArgumentNullException(nameof(Name),"Name Must Not be null");
+            //if (Name == null)
+            //    throw new ArgumentNullException(nameof(Name),"Name Must Not be null");
 
 
             Console.WriteLine(Name);
